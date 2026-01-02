@@ -1,2 +1,170 @@
-<h1>OdishaCyberOps</h1>
-<p>Cyber awareness & threat intelligence for Odisha</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OdishaCyberOps | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<script>
+    function updateISTClock() {
+      const now = new Date();
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const ist = new Date(utc + (5.5 * 60 * 60 * 1000));
+    
+      const time = ist.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      });
+    
+      const date = ist.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    
+      document.getElementById("ist-clock").innerHTML =
+        `IST | ${date} ${time}`;
+    }
+    
+    setInterval(updateISTClock, 1000);
+    updateISTClock();
+    </script>    
+
+<body class="home-bg">
+  
+<body>
+
+    <nav class="navbar">
+        <div class="logo">OdishaCyberOps</div>
+      
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+      
+          <li class="dropdown">
+            <a href="#">Dashboard ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="notes.html">Notes</a></li>
+              <li><a href="calendar.html">Calendar</a></li>
+              <li><a href="index.html#weather">Weather</a></li>
+            </ul>
+          </li>
+      
+          <li class="dropdown">
+            <a href="#">Resources ▾</a>
+            <ul class="dropdown-menu">
+              <li><a href="resources.html">Documents</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="https://www.reddit.com/r/OdishaCyberOps/" target="_blank">
+              Community
+            </a>
+          </li>
+      
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      
+        <div class="nav-right">
+          <div id="ist-clock" class="soc-clock"></div>
+        </div>
+      </nav>
+      
+      
+
+<div class="container">
+
+          
+  <h1>Cyber Notice Board</h1>
+
+  <div class="card">
+    📢 <strong>Alert:</strong> Rise in fake loan app frauds reported in Odisha.
+  </div>
+
+  <div class="card">
+    📄 <strong>Update:</strong> New cyber awareness documents added.
+  </div>
+
+  <div class="card">
+    🛡️ <strong>Mission:</strong> Spreading cyber security awareness and operational knowledge.
+  </div>
+
+  <div class="card">
+    🧠 <strong>Community:</strong><br><br>
+    Discussions, alerts, and cyber awareness posts are shared on our subreddit.
+    <br><br>
+    <a href="https://www.reddit.com/r/OdishaCyberOps/" target="_blank">
+      → Visit r/OdishaCyberOps
+    </a>
+  </div>
+  
+  <div class="alert-card">
+    ⚠️ <strong>Weather Alert:</strong>
+    No severe weather alerts issued for Odisha at this time.
+  </div>
+  <h2>🛰️ Last Recorded Weather Snapshot</h2>
+
+  <div class="card">
+    <img src="assets/images/odisha-weather-latest.png"
+         alt="Odisha Weather Snapshot"
+         style="width:100%; border-radius:8px;">
+    <p style="color:#8b949e; margin-top:10px;">
+      Last updated: 08 Jan 2026, 09:00 IST
+    </p>
+  </div>
+  
+<h2>🌦️ Odisha District Weather</h2>
+
+<div class="district-grid">
+
+<a class="district-card" href="https://www.windy.com/?20.2961,85.8245,7" target="_blank">
+Bhubaneswar
+</a>
+
+<a class="district-card"
+href="https://www.windy.com/?20.2559,86.1706,8" target="_blank">
+Jagatsinghpur
+</a>
+
+<a class="district-card"
+href="https://www.windy.com/?20.4625,85.8828,8" target="_blank">
+Cuttack
+</a>
+
+
+<a class="district-card" href="https://www.windy.com/?19.3130,84.7941,7" target="_blank">
+Berhampur
+</a>
+
+<a class="district-card" href="https://www.windy.com/?21.4704,83.9701,7" target="_blank">
+Sambalpur
+</a>
+
+<a class="district-card" href="https://www.windy.com/?20.8430,85.1510,7" target="_blank">
+Angul
+</a>
+
+<a class="district-card" href="https://www.windy.com/?19.8081,85.8253,7" target="_blank">
+Puri
+</a>
+
+</div>
+
+</div>
+
+<footer>
+    
+    <br>
+<a href="https://www.reddit.com/r/OdishaCyberOps/" target="_blank">
+  r/OdishaCyberOps
+</a>
+
+
+  © 2026 OdishaCyberOps
+</footer>
+
+</body>
+</html>
