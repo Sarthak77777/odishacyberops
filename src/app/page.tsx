@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { Globe, ShieldAlert, Bolt, BookOpen } from "lucide-react";
 import {
   advisoryBanners,
@@ -40,26 +41,26 @@ export default function Home() {
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl border border-cyan-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(34,211,238,0.8)]">
+              <Link href="/cves" className="group rounded-3xl border border-cyan-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(34,211,238,0.8)] transition hover:border-cyan-300/40 hover:bg-slate-900">
                 <div className="flex items-center justify-between text-slate-200">
-                  <span className="font-semibold">Live CVE counter</span>
+                  <span className="font-semibold transition group-hover:text-cyan-200">Live CVE counter</span>
                   <span className="text-cyan-300">+328</span>
                 </div>
                 <p className="mt-3 text-sm text-slate-400">Critical and actively exploited vulnerabilities tracked in our feed.</p>
-              </div>
-              <div className="rounded-3xl border border-fuchsia-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(236,72,153,0.7)]">
+              </Link>
+              <Link href="/exploitation" className="group rounded-3xl border border-fuchsia-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(236,72,153,0.7)] transition hover:border-fuchsia-300/40 hover:bg-slate-900">
                 <div className="flex items-center justify-between text-slate-200">
-                  <span className="font-semibold">Active exploitation alerts</span>
+                  <span className="font-semibold transition group-hover:text-fuchsia-200">Active exploitation alerts</span>
                   <span className="text-fuchsia-300">14</span>
                 </div>
                 <p className="mt-3 text-sm text-slate-400">Threat actor activity, KEV status, and exploit availability combined.</p>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-slate-900/95 to-slate-950/70 p-6 shadow-[0_25px_90px_-40px_rgba(0,0,0,0.75)]">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(34,211,238,0.16),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(168,85,247,0.12),_transparent_24%)]" />
             <div className="relative space-y-6">
-              <div className="rounded-3xl border border-cyan-500/10 bg-slate-950/90 p-4 text-slate-200 shadow-[0_12px_40px_-25px_rgba(34,211,238,0.6)]">
+              <Link href="/threat-tracker" className="block rounded-3xl border border-cyan-500/10 bg-slate-950/90 p-4 text-slate-200 shadow-[0_12px_40px_-25px_rgba(34,211,238,0.6)] transition hover:border-cyan-300/30 hover:bg-slate-900">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">Threat ticker</p>
@@ -70,20 +71,20 @@ export default function Home() {
                 <div className="mt-4 space-y-3 text-sm text-slate-300">
                   {advisoryBanners.map((banner, index) => (
                     <div key={index} className="rounded-2xl bg-slate-900/90 p-3 text-slate-200 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.08)]">
-                      {banner}
+                      {banner.message}
                     </div>
                   ))}
                 </div>
-              </div>
+              </Link>
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)]">
+                <Link href="/advisories" className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
                   <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Advisory banner</p>
                   <p className="mt-3 text-lg font-semibold text-white">Rotating cyber advisory alerts</p>
-                </div>
-                <div className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)]">
+                </Link>
+                <Link href="/network" className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
                   <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Network background</p>
                   <p className="mt-3 text-lg font-semibold text-white">Animated globe and threat feed pulse</p>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -102,7 +103,7 @@ export default function Home() {
             </div>
             <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {recentCves.map((cve) => (
-                <div key={cve.id} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200 shadow-[0_16px_50px_-30px_rgba(0,0,0,0.8)]">
+                <Link href={`/cves#${cve.id.toLowerCase()}`} key={cve.id} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200 shadow-[0_16px_50px_-30px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
                   <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{cve.id}</p>
                   <h3 className="mt-3 text-lg font-semibold text-white">{cve.title}</h3>
                   <p className="mt-2 text-sm text-slate-400">{cve.products.join(", ")}</p>
@@ -110,7 +111,7 @@ export default function Home() {
                     <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-cyan-300">{cve.score} CVSS</span>
                     <span className="font-medium text-slate-100">{cve.status}</span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

@@ -48,6 +48,12 @@ export type EmergencyResource = {
   icon: string;
 };
 
+export type ThreatTickerItem = {
+  message: string;
+  category: string;
+  href: string;
+};
+
 export const liveMetrics: ThreatMetric[] = [
   {
     id: "active-threats",
@@ -113,11 +119,27 @@ export const quickActions = [
   },
 ];
 
-export const advisoryBanners = [
-  "CERT-In advisory: active phishing clusters targeting Odisha financial institutions.",
-  "Microsoft Exchange exploitation alerts updated with new detection signatures.",
-  "CISA KEV list includes critical kernel privilege escalation vulnerabilities.",
-  "Palo Alto Unit 42 highlights new Linux supply chain campaign.",
+export const advisoryBanners: ThreatTickerItem[] = [
+  {
+    message: "CERT-In advisory: active phishing clusters targeting Odisha financial institutions.",
+    category: "Phishing",
+    href: "/advisories",
+  },
+  {
+    message: "Microsoft Exchange exploitation alerts updated with new detection signatures.",
+    category: "Detection",
+    href: "/detection",
+  },
+  {
+    message: "CISA KEV list includes critical kernel privilege escalation vulnerabilities.",
+    category: "KEV",
+    href: "/cves",
+  },
+  {
+    message: "Palo Alto Unit 42 highlights new Linux supply chain campaign.",
+    category: "Threat research",
+    href: "/threat-tracker",
+  },
 ];
 
 export const recentCves = [
@@ -141,6 +163,27 @@ export const recentCves = [
     score: "8.9",
     status: "Exploit proof-of-concept",
     products: ["Linux Kernel"],
+  },
+];
+
+export const exploitationAlerts = [
+  {
+    title: "Public-facing VPN appliances under active probing",
+    severity: "Critical",
+    target: "Remote access infrastructure",
+    action: "Restrict management access, patch edge devices, and review successful VPN logins.",
+  },
+  {
+    title: "Credential phishing against Microsoft 365 tenants",
+    severity: "High",
+    target: "Cloud identity",
+    action: "Enforce MFA, revoke suspicious sessions, and review risky sign-ins.",
+  },
+  {
+    title: "Ransomware affiliates abusing exposed RDP",
+    severity: "High",
+    target: "Windows servers",
+    action: "Disable public RDP, require VPN access, and monitor brute-force attempts.",
   },
 ];
 
