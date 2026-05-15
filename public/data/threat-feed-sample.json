@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-05-15T00:00:00Z",
+  "source": "ODISACYBEROPS.IN",
+  "feedType": "threat-intelligence",
+  "items": [
+    {
+      "id": "T-OD-001",
+      "title": "Active ransomware campaign targeting Odisha SMBs",
+      "severity": "Critical",
+      "category": "Ransomware",
+      "confidence": "High",
+      "observedAt": "2026-05-14T18:45:00Z",
+      "indicators": ["203.0.113.45", "malicious-scan[.]in", "sha256:abcd..."],
+      "mitigation": "Isolate affected hosts, block C2 domains, patch exposed services.",
+      "references": ["https://cisa.gov/kev", "https://unit42.paloaltonetworks.com"]
+    },
+    {
+      "id": "T-OD-002",
+      "title": "Microsoft Exchange ProxyLogon exploitation observed",
+      "severity": "High",
+      "category": "Active Exploitation",
+      "confidence": "Medium",
+      "observedAt": "2026-05-13T12:30:00Z",
+      "indicators": ["192.0.2.22", "evilmail[.]in", "CVE-2025-4501"],
+      "mitigation": "Apply vendor patch, enable MFA, monitor Exchange services.",
+      "references": ["https://microsoft.com/security", "https://cert-in.org.in"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0",
+  "type": "ioc-search",
+  "queryTypes": ["ip", "domain", "hash", "cve", "attack_id", "malware"],
+  "trackers": [
+    {
+      "ioc": "203.0.113.45",
+      "type": "ip",
+      "reputation": "malicious",
+      "source": ["cybercrime.gov.in", "local SOC"],
+      "related": ["malicious-scan[.]in", "CVE-2025-4501"]
+    }
+  ]
+}

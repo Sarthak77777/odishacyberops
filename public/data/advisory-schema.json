@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0",
+  "type": "advisory-feed",
+  "items": [
+    {
+      "id": "A-001",
+      "title": "Critical Linux VPN appliance RCE",
+      "severity": "Critical",
+      "affectedProducts": ["OpenVPN", "FortiOS"],
+      "exploitationStatus": "Active",
+      "mitigation": "Apply vendor advisory, isolate VPN management interfaces, monitor network logs.",
+      "references": ["https://unit42.paloaltonetworks.com", "https://cisa.gov/kev"],
+      "attackMapping": ["Initial Access", "Persistence", "Command and Control"]
+    }
+  ]
+}

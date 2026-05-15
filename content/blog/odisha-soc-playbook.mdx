@@ -1,0 +1,40 @@
+---
+title: "Building a Regional SOC Playbook for Odisha"
+description: "Designing operational workflows, detection engineering, and incident response for Odisha cyber defense."
+date: "2026-05-10"
+tags:
+  - SOC
+  - incident response
+  - threat intelligence
+---
+
+import { Code2 } from "lucide-react";
+
+## Odisha SOC design principles
+
+The Odisha Cyber Operations platform brings environment-specific threat intelligence, advisory aggregation, and detection engineering into a unified hub.
+
+### Key mission areas
+
+- Live threat tracking for regional campaigns
+- Advisory aggregation from CISA, Microsoft, Unit 42, and CERT-In
+- Incident response workflows for fraud, ransomware, and supply chain compromise
+
+### Detection engineering sample
+
+```yaml
+rule: odisha_ransomware_command_shell
+logsource:
+  category: process_creation
+  product: windows
+condition:
+  selection:
+    CommandLine|contains:
+      - "powershell"
+      - "Invoke-Expression"
+  condition: selection
+```
+
+### Takeaway
+
+A strong regional hub must combine local awareness with global threat feeds to reduce blast radius and improve response time.
