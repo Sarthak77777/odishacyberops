@@ -198,15 +198,17 @@ export default function Home() {
           </div>
 
           <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Awareness portal</p>
-            <h2 className="mt-2 text-2xl font-semibold text-white">Regional cyber awareness</h2>
+            <Link href="/awareness" className="group block">
+              <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Awareness portal</p>
+              <h2 className="mt-2 text-2xl font-semibold text-white transition group-hover:text-cyan-100">Regional cyber awareness</h2>
+            </Link>
             <div className="mt-5 space-y-4">
               {awarenessCards.slice(0, 3).map((card) => (
-                <div key={card.title} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200">
+                <Link href={`/awareness#${card.id}`} key={card.title} className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200 transition hover:border-cyan-300/30 hover:bg-slate-900">
                   <p className="text-lg font-semibold text-white">{card.title}</p>
                   <p className="mt-2 text-sm text-slate-400">{card.description}</p>
                   <p className="mt-3 text-sm uppercase tracking-[0.24em] text-cyan-300">{card.action}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>

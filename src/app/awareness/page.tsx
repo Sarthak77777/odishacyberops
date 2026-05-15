@@ -13,7 +13,7 @@ export default function AwarenessPage() {
       </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {awarenessCards.map((card) => (
-          <article key={card.title} className="group rounded-3xl border border-slate-700/30 bg-slate-900/90 p-6 text-slate-200 transition hover:border-cyan-400/30 hover:bg-slate-900/95">
+          <article id={card.id} key={card.title} className="group scroll-mt-28 rounded-3xl border border-slate-700/30 bg-slate-900/90 p-6 text-slate-200 transition hover:border-cyan-400/30 hover:bg-slate-900/95">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/10 text-cyan-300">{card.language.toUpperCase()}</span>
               <h2 className="text-xl font-semibold text-white">{card.title}</h2>

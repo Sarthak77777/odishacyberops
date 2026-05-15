@@ -35,6 +35,7 @@ export type ThreatActor = {
 };
 
 export type AwarenessCard = {
+  id: string;
   title: string;
   description: string;
   action: string;
@@ -237,6 +238,7 @@ export const threatActors: ThreatActor[] = [
 
 export const awarenessCards: AwarenessCard[] = [
   {
+    id: "upi-fraud-awareness",
     title: "UPI Fraud Awareness",
     description: "Learn how UPI scams trick users with fake payment requests and fraud apps.",
     action: "Verify before sending money.",
@@ -246,9 +248,11 @@ export const awarenessCards: AwarenessCard[] = [
     title: "ଫେକ୍ ଲୋନ୍ ଆପ୍ସ ପ୍ରତି ସଚେତନତା",
     description: "ଏହି ଲୋନ୍ ଆପ୍ସ ତଥା ଗୋପନୀୟତା ପ୍ରଶ୍ନକୁ ନଜର ଦିଅନ୍ତୁ ।",
     action: "ନିଜ ବ୍ୟାଙ୍କ ଅପ୍ଲିକେସନ୍ ବ୍ୟବହାର କରନ୍ତୁ ।",
+    id: "fake-loan-apps-odia",
     language: "or",
   },
   {
+    id: "phishing-detection",
     title: "Phishing Detection",
     description: "Spot suspicious links, typos, and urgent payment demands in emails.",
     action: "Report phishing to your SOC.",
