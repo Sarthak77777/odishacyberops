@@ -2,7 +2,19 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Globe, ShieldAlert, Bolt, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Activity,
+  ArrowUpRight,
+  BookOpen,
+  Bolt,
+  Crosshair,
+  Globe,
+  RadioTower,
+  ShieldAlert,
+  Sparkles,
+} from "lucide-react";
+import { CyberCard, Reveal, StatusPill } from "@/components/MotionPrimitives";
 import {
   advisoryBanners,
   awarenessCards,
@@ -14,204 +26,298 @@ import {
 } from "@/lib/data";
 
 const ThreatMap = dynamic(() => import("@/components/charts/ThreatMap"), { ssr: false });
-const ExploitationRadar = dynamic(
-  () => import("@/components/charts/ExploitationRadar"),
-  { ssr: false }
-);
-const TrendSparkline = dynamic(() => import("@/components/charts/TrendSparkline"), {
-  ssr: false,
-});
+const ExploitationRadar = dynamic(() => import("@/components/charts/ExploitationRadar"), { ssr: false });
+const TrendSparkline = dynamic(() => import("@/components/charts/TrendSparkline"), { ssr: false });
+
+const intelligenceMessages = [
+  "Tracking active exploitation across edge devices",
+  "Correlating CERT-In, KEV, vendor, and regional telemetry",
+  "Prioritizing incident response workflows for Odisha and India",
+];
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.12 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
+  show: { opacity: 1, y: 0, filter: "blur(0px)" },
+};
 
 export default function Home() {
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 py-6">
-      <section className="glass-card overflow-hidden rounded-[32px] border border-white/10 bg-slate-950/80 p-8 shadow-[0_32px_120px_-50px_rgba(0,0,0,0.8)]">
-        <div className="grid gap-8 xl:grid-cols-[1.35fr_0.85fr]">
-          <div className="space-y-6">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.26em] text-cyan-300">
-              <ShieldAlert className="h-4 w-4 text-cyan-300" />
-              Live Odisha Cyber Fusion Center
-            </div>
-            <div className="space-y-4">
-              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                Odisha Cyber Operations & Threat Intelligence
-              </h1>
-              <p className="max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
-                Regional SOC analytics, threat advisory aggregation, incident response triage, and detection engineering knowledge for Odisha and India.
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Link href="/cves" className="group rounded-3xl border border-cyan-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(34,211,238,0.8)] transition hover:border-cyan-300/40 hover:bg-slate-900">
-                <div className="flex items-center justify-between text-slate-200">
-                  <span className="font-semibold transition group-hover:text-cyan-200">Live CVE counter</span>
-                  <span className="text-cyan-300">+328</span>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">Critical and actively exploited vulnerabilities tracked in our feed.</p>
-              </Link>
-              <Link href="/exploitation" className="group rounded-3xl border border-fuchsia-400/10 bg-slate-950/90 p-5 text-sm text-slate-200 shadow-[0_18px_45px_-30px_rgba(236,72,153,0.7)] transition hover:border-fuchsia-300/40 hover:bg-slate-900">
-                <div className="flex items-center justify-between text-slate-200">
-                  <span className="font-semibold transition group-hover:text-fuchsia-200">Active exploitation alerts</span>
-                  <span className="text-fuchsia-300">14</span>
-                </div>
-                <p className="mt-3 text-sm text-slate-400">Threat actor activity, KEV status, and exploit availability combined.</p>
-              </Link>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-gradient-to-br from-slate-900/95 to-slate-950/70 p-6 shadow-[0_25px_90px_-40px_rgba(0,0,0,0.75)]">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(34,211,238,0.16),_transparent_28%),radial-gradient(circle_at_bottom_left,_rgba(168,85,247,0.12),_transparent_24%)]" />
-            <div className="relative space-y-6">
-              <Link href="/threat-tracker" className="block rounded-3xl border border-cyan-500/10 bg-slate-950/90 p-4 text-slate-200 shadow-[0_12px_40px_-25px_rgba(34,211,238,0.6)] transition hover:border-cyan-300/30 hover:bg-slate-900">
+      <motion.section
+        className="glass-card rounded-[36px] p-5 sm:p-8 lg:p-10"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
+        <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
+          <div className="flex min-h-[560px] flex-col justify-between gap-8">
+            <motion.div variants={item} className="space-y-6">
+              <StatusPill tone="emerald">Live Odisha Cyber Fusion Center</StatusPill>
+              <div className="space-y-5">
+                <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-normal text-white sm:text-6xl lg:text-7xl">
+                  Odisha Cyber Operations
+                  <span className="block text-gradient-cyber">Threat Intelligence</span>
+                </h1>
+                <p className="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                  A cinematic SOC dashboard for advisory aggregation, exploit tracking, incident response triage, and regional cyber awareness.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/threat-tracker"
+                  className="group inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 shadow-[0_0_34px_rgba(38,247,255,0.12)] transition hover:border-cyan-200/50 hover:bg-cyan-300/15"
+                >
+                  Open threat tracker
+                  <ArrowUpRight className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </Link>
+                <Link
+                  href="/contacts"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-fuchsia-300/30 hover:bg-fuchsia-300/10"
+                >
+                  Incident response
+                  <ShieldAlert className="h-4 w-4" />
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div variants={item} className="grid gap-4 sm:grid-cols-2">
+              <CyberCard href="/cves" className="p-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">Threat ticker</p>
-                    <p className="mt-3 text-lg font-semibold text-white">Live regional exploit notifications</p>
+                    <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Live CVE counter</p>
+                    <p className="mt-3 text-4xl font-semibold text-white">+328</p>
                   </div>
-                  <Bolt className="h-6 w-6 text-cyan-300" />
+                  <Crosshair className="h-8 w-8 text-cyan-200" />
                 </div>
-                <div className="mt-4 space-y-3 text-sm text-slate-300">
+                <p className="mt-4 text-sm leading-6 text-slate-400">Critical and actively exploited vulnerabilities tracked in the feed.</p>
+                <div className="data-stream mt-5 h-px w-full" />
+              </CyberCard>
+
+              <CyberCard href="/exploitation" className="p-5">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.24em] text-fuchsia-300">Active exploitation</p>
+                    <p className="mt-3 text-4xl font-semibold text-white">14</p>
+                  </div>
+                  <Bolt className="h-8 w-8 text-fuchsia-200" />
+                </div>
+                <p className="mt-4 text-sm leading-6 text-slate-400">Threat actor activity, KEV status, and exploit availability combined.</p>
+                <div className="data-stream mt-5 h-px w-full" />
+              </CyberCard>
+            </motion.div>
+          </div>
+
+          <motion.div variants={item} className="relative min-h-[560px] overflow-hidden rounded-[32px] border border-cyan-300/15 bg-slate-950/70 p-5 shadow-[0_0_90px_rgba(38,247,255,0.09)]">
+            <div className="absolute inset-0 cyber-grid opacity-40" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(38,247,255,0.15),transparent_28%),linear-gradient(180deg,transparent,rgba(3,5,13,0.88))]" />
+            <motion.div
+              aria-hidden="true"
+              className="absolute left-1/2 top-[42%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-300/20"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
+            >
+              <div className="absolute left-1/2 top-0 h-3 w-3 -translate-x-1/2 rounded-full bg-cyan-300 shadow-[0_0_24px_rgba(38,247,255,0.9)]" />
+              <div className="absolute bottom-10 right-4 h-2.5 w-2.5 rounded-full bg-fuchsia-300 shadow-[0_0_24px_rgba(255,61,242,0.8)]" />
+            </motion.div>
+            <motion.div
+              aria-hidden="true"
+              className="absolute left-1/2 top-[42%] h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full border border-fuchsia-300/20"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+            />
+
+            <div className="relative flex h-full flex-col justify-between gap-5">
+              <div className="rounded-[28px] border border-white/10 bg-black/25 p-5 backdrop-blur-xl">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.28em] text-cyan-300">Threat ticker</p>
+                    <motion.p
+                      className="mt-3 text-xl font-semibold text-white"
+                      animate={{ opacity: [0.65, 1, 0.65] }}
+                      transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      {intelligenceMessages[0]}
+                    </motion.p>
+                  </div>
+                  <RadioTower className="h-7 w-7 text-cyan-200" />
+                </div>
+                <div className="mt-5 space-y-3">
                   {advisoryBanners.map((banner, index) => (
-                    <div key={index} className="rounded-2xl bg-slate-900/90 p-3 text-slate-200 shadow-[inset_0_0_0_1px_rgba(148,163,184,0.08)]">
-                      {banner.message}
-                    </div>
+                    <Link
+                      href={banner.href}
+                      key={banner.message}
+                      className="group flex items-start justify-between gap-3 rounded-2xl border border-slate-700/35 bg-slate-950/70 p-3 text-sm text-slate-300 transition hover:border-cyan-300/25 hover:bg-cyan-300/10"
+                    >
+                      <span>{banner.message}</span>
+                      <span className="text-xs uppercase tracking-[0.18em] text-cyan-300">{String(index + 1).padStart(2, "0")}</span>
+                    </Link>
                   ))}
                 </div>
-              </Link>
+              </div>
+
               <div className="grid gap-4 sm:grid-cols-2">
-                <Link href="/advisories" className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
-                  <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Advisory banner</p>
-                  <p className="mt-3 text-lg font-semibold text-white">Rotating cyber advisory alerts</p>
+                <Link href="/advisories" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+                  <Sparkles className="h-6 w-6 text-cyan-300" />
+                  <p className="mt-4 text-xs uppercase tracking-[0.24em] text-slate-400">Advisory banner</p>
+                  <p className="mt-2 text-lg font-semibold text-white">Rotating cyber advisory alerts</p>
                 </Link>
-                <Link href="/network" className="rounded-3xl border border-slate-600/20 bg-slate-950/90 p-5 text-slate-200 shadow-[0_20px_80px_-50px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
-                  <p className="text-xs uppercase tracking-[0.28em] text-slate-400">Network background</p>
-                  <p className="mt-3 text-lg font-semibold text-white">Animated globe and threat feed pulse</p>
+                <Link href="/network" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+                  <Globe className="h-6 w-6 text-fuchsia-300" />
+                  <p className="mt-4 text-xs uppercase tracking-[0.24em] text-slate-400">Network background</p>
+                  <p className="mt-2 text-lg font-semibold text-white">Animated telemetry pulse</p>
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       <section className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
         <div className="grid gap-6">
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
-            <div className="mb-5 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Live threat panels</p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">Operational intelligence overview</h2>
+          <Reveal>
+            <div className="glass-card rounded-[32px] p-6">
+              <div className="mb-5 flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Live threat panels</p>
+                  <h2 className="mt-2 text-2xl font-semibold text-white">Operational intelligence overview</h2>
+                </div>
+                <Activity className="h-6 w-6 text-cyan-300" />
               </div>
-              <Globe className="h-6 w-6 text-cyan-300" />
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {recentCves.map((cve, index) => (
+                  <Reveal key={cve.id} delay={index * 0.05}>
+                    <Link href={`/cves#${cve.id.toLowerCase()}`} className="premium-card block h-full rounded-[24px] border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                      <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">{cve.id}</p>
+                      <h3 className="mt-3 text-lg font-semibold text-white">{cve.title}</h3>
+                      <p className="mt-2 text-sm text-slate-400">{cve.products.join(", ")}</p>
+                      <div className="mt-4 flex flex-wrap items-center gap-3 text-sm">
+                        <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-cyan-300">{cve.score} CVSS</span>
+                        <span className="font-medium text-slate-100">{cve.status}</span>
+                      </div>
+                    </Link>
+                  </Reveal>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {recentCves.map((cve) => (
-                <Link href={`/cves#${cve.id.toLowerCase()}`} key={cve.id} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200 shadow-[0_16px_50px_-30px_rgba(0,0,0,0.8)] transition hover:border-cyan-300/30 hover:bg-slate-900">
-                  <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{cve.id}</p>
-                  <h3 className="mt-3 text-lg font-semibold text-white">{cve.title}</h3>
-                  <p className="mt-2 text-sm text-slate-400">{cve.products.join(", ")}</p>
-                  <div className="mt-4 flex items-center justify-between gap-3 text-sm text-slate-300">
-                    <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-cyan-300">{cve.score} CVSS</span>
-                    <span className="font-medium text-slate-100">{cve.status}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
+          </Reveal>
 
           <div className="grid gap-6 xl:grid-cols-[0.68fr_0.32fr]">
-            <ExploitationRadar />
-            <TrendSparkline />
+            <Reveal><ExploitationRadar /></Reveal>
+            <Reveal delay={0.06}><TrendSparkline /></Reveal>
           </div>
         </div>
-        <aside className="space-y-6">
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_20px_70px_-40px_rgba(0,0,0,0.75)]">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Quick actions</p>
-            <div className="mt-5 grid gap-3">
-              {quickActions.map((action) => (
-                <a key={action.label} href={action.href} className="rounded-3xl border border-slate-700/40 bg-slate-900/90 px-4 py-3 text-sm font-medium text-slate-100 transition hover:border-cyan-400/30 hover:bg-slate-900/95">
-                  {action.label}
-                </a>
-              ))}
-            </div>
-          </div>
 
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_20px_70px_-40px_rgba(0,0,0,0.75)]">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Cyber emergency contact hub</p>
-            <div className="mt-5 space-y-4">
-              {emergencyContacts.map((contact) => (
-                <a key={contact.label} href={contact.link} className="group block rounded-3xl border border-slate-800/50 bg-slate-900/90 p-4 transition hover:border-cyan-400/25 hover:bg-slate-900/95">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-sm font-semibold text-white">{contact.label}</p>
-                      <p className="mt-2 text-sm text-slate-400">{contact.description}</p>
-                    </div>
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-300">{contact.icon.slice(0, 1).toUpperCase()}</span>
-                  </div>
-                </a>
-              ))}
+        <aside className="space-y-6">
+          <Reveal>
+            <div className="glass-card rounded-[32px] p-6">
+              <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Quick actions</p>
+              <div className="mt-5 grid gap-3">
+                {quickActions.map((action) => (
+                  <Link key={action.label} href={action.href} className="premium-card flex items-center justify-between rounded-2xl border border-slate-700/40 bg-slate-950/70 px-4 py-3 text-sm font-medium text-slate-100">
+                    {action.label}
+                    <ArrowUpRight className="h-4 w-4 text-cyan-300" />
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
+
+          <Reveal delay={0.06}>
+            <div className="glass-card rounded-[32px] p-6">
+              <p className="text-sm uppercase tracking-[0.24em] text-red-300">Cyber emergency contact hub</p>
+              <div className="mt-5 space-y-4">
+                {emergencyContacts.map((contact) => (
+                  <a key={contact.label} href={contact.link} className="premium-card group block rounded-2xl border border-slate-800/50 bg-slate-950/70 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-sm font-semibold text-white">{contact.label}</p>
+                        <p className="mt-2 text-sm text-slate-400">{contact.description}</p>
+                      </div>
+                      <span className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-red-500/10 text-red-300">{contact.icon.slice(0, 1).toUpperCase()}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </Reveal>
         </aside>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[0.64fr_0.36fr]">
         <div className="grid gap-6">
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
-            <div className="mb-5 flex items-center justify-between gap-3">
-              <div>
-                <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Operational metrics</p>
-                <h2 className="mt-2 text-2xl font-semibold text-white">Live cyber metrics</h2>
-              </div>
-              <BookOpen className="h-6 w-6 text-cyan-300" />
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {liveMetrics.map((metric) => (
-                <div key={metric.id} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-5 text-slate-200">
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">{metric.label}</p>
-                  <p className="mt-3 text-3xl font-semibold text-white">{metric.value}</p>
-                  <p className="mt-3 text-sm text-slate-400">{metric.detail}</p>
-                  <p className="mt-3 text-xs uppercase tracking-[0.24em] text-emerald-300">{metric.trend}</p>
+          <Reveal>
+            <div className="glass-card rounded-[32px] p-6">
+              <div className="mb-5 flex items-center justify-between gap-3">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Operational metrics</p>
+                  <h2 className="mt-2 text-2xl font-semibold text-white">Live cyber metrics</h2>
                 </div>
-              ))}
+                <BookOpen className="h-6 w-6 text-cyan-300" />
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {liveMetrics.map((metric) => (
+                  <div key={metric.id} className="premium-card rounded-[24px] border border-slate-700/30 bg-slate-950/70 p-5 text-slate-200">
+                    <p className="text-xs uppercase tracking-[0.25em] text-slate-400">{metric.label}</p>
+                    <p className="mt-3 text-3xl font-semibold text-white">{metric.value}</p>
+                    <p className="mt-3 text-sm text-slate-400">{metric.detail}</p>
+                    <p className="mt-3 text-xs uppercase tracking-[0.24em] text-emerald-300">{metric.trend}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
 
-          <ThreatMap />
+          <Reveal><ThreatMap /></Reveal>
         </div>
 
         <div className="space-y-6">
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Threat actor profiles</p>
-            <h2 className="mt-2 text-2xl font-semibold text-white">Active actor watchlist</h2>
-            <div className="mt-5 space-y-4">
-              {threatActors.map((actor) => (
-                <div key={actor.name} className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
-                      <p className="text-lg font-semibold text-white">{actor.name}</p>
-                      <p className="mt-1 text-sm text-slate-400">{actor.region} • {actor.sectors.join(", ")}</p>
+          <Reveal>
+            <div className="glass-card rounded-[32px] p-6">
+              <p className="text-sm uppercase tracking-[0.24em] text-fuchsia-300">Threat actor profiles</p>
+              <h2 className="mt-2 text-2xl font-semibold text-white">Active actor watchlist</h2>
+              <div className="mt-5 space-y-4">
+                {threatActors.map((actor) => (
+                  <Link href="/actors" key={actor.name} className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <p className="text-lg font-semibold text-white">{actor.name}</p>
+                        <p className="mt-1 text-sm text-slate-400">{actor.region} / {actor.sectors.join(", ")}</p>
+                      </div>
+                      <span className="rounded-full bg-fuchsia-500/10 px-3 py-1 text-xs uppercase tracking-[0.18em] text-fuchsia-300">{actor.aliases[0]}</span>
                     </div>
-                    <span className="rounded-full bg-fuchsia-500/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-fuchsia-300">{actor.aliases[0]}</span>
-                  </div>
-                  <p className="mt-4 text-sm text-slate-400">{actor.recentCampaign}</p>
-                </div>
-              ))}
+                    <p className="mt-4 text-sm text-slate-400">{actor.recentCampaign}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-6 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
-            <Link href="/awareness" className="group block">
-              <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Awareness portal</p>
-              <h2 className="mt-2 text-2xl font-semibold text-white transition group-hover:text-cyan-100">Regional cyber awareness</h2>
-            </Link>
-            <div className="mt-5 space-y-4">
-              {awarenessCards.slice(0, 3).map((card) => (
-                <Link href={`/awareness#${card.id}`} key={card.title} className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 text-slate-200 transition hover:border-cyan-300/30 hover:bg-slate-900">
-                  <p className="text-lg font-semibold text-white">{card.title}</p>
-                  <p className="mt-2 text-sm text-slate-400">{card.description}</p>
-                  <p className="mt-3 text-sm uppercase tracking-[0.24em] text-cyan-300">{card.action}</p>
-                </Link>
-              ))}
+          <Reveal delay={0.06}>
+            <div className="glass-card rounded-[32px] p-6">
+              <Link href="/awareness" className="group block">
+                <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Awareness portal</p>
+                <h2 className="mt-2 text-2xl font-semibold text-white transition group-hover:text-cyan-100">Regional cyber awareness</h2>
+              </Link>
+              <div className="mt-5 space-y-4">
+                {awarenessCards.slice(0, 3).map((card) => (
+                  <Link href={`/awareness#${card.id}`} key={card.title} className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                    <p className="text-lg font-semibold text-white">{card.title}</p>
+                    <p className="mt-2 text-sm text-slate-400">{card.description}</p>
+                    <p className="mt-3 text-sm uppercase tracking-[0.2em] text-cyan-300">{card.action}</p>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </div>

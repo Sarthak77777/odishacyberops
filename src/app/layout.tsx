@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import GlobalNav from "@/components/GlobalNav";
+import { AmbientBackground } from "@/components/MotionPrimitives";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,8 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="h-full">
       <body className="min-h-full bg-slate-950 text-slate-100 antialiased">
+        <AmbientBackground />
         <GlobalNav />
-        <main className="relative overflow-hidden py-6 px-4 sm:px-6 lg:px-8">
+        <main className="relative overflow-hidden px-4 py-6 sm:px-6 lg:px-8">
           {children}
         </main>
       </body>
