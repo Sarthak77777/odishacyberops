@@ -35,6 +35,9 @@ const intelligenceMessages = [
   "Prioritizing incident response workflows for Odisha and India",
 ];
 
+const cyberEase = [0.22, 1, 0.36, 1] as const;
+const heroEase = [0.16, 1, 0.3, 1] as const;
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -44,34 +47,51 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)" },
+  hidden: { opacity: 0, y: 34, scale: 0.97, filter: "blur(12px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 0.9, ease: cyberEase },
+  },
+};
+
+const heroRise = {
+  hidden: { opacity: 0, y: 52, scale: 0.94, filter: "blur(18px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: { duration: 1.05, ease: heroEase },
+  },
 };
 
 export default function Home() {
   return (
     <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 py-6">
       <motion.section
-        className="glass-card rounded-[36px] p-5 sm:p-8 lg:p-10"
+        className="glass-card flex min-h-[calc(100vh-132px)] flex-col justify-center rounded-[36px] p-5 sm:p-8 lg:p-10"
         variants={container}
         initial="hidden"
         animate="show"
       >
         <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent" />
-        <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
-          <div className="flex min-h-[560px] flex-col justify-between gap-8">
-            <motion.div variants={item} className="space-y-6">
+        <div className="grid gap-8">
+          <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-8 py-8 text-center lg:py-12">
+            <motion.div variants={heroRise} className="space-y-6">
               <StatusPill tone="emerald">Live Odisha Cyber Fusion Center</StatusPill>
-              <div className="space-y-5">
-                <h1 className="max-w-5xl text-5xl font-semibold leading-[0.95] tracking-normal text-white sm:text-6xl lg:text-7xl">
+              <div className="space-y-6">
+                <h1 className="mx-auto max-w-6xl text-5xl font-semibold leading-[0.95] tracking-normal text-white sm:text-7xl lg:text-8xl">
                   Odisha Cyber Operations
                   <span className="block text-gradient-cyber">Threat Intelligence</span>
                 </h1>
-                <p className="max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                <p className="mx-auto max-w-3xl text-base leading-8 text-slate-300 sm:text-xl">
                   A cinematic SOC dashboard for advisory aggregation, exploit tracking, incident response triage, and regional cyber awareness.
                 </p>
               </div>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/threat-tracker"
                   className="group inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 shadow-[0_0_34px_rgba(38,247,255,0.12)] transition hover:border-cyan-200/50 hover:bg-cyan-300/15"
@@ -89,34 +109,34 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div variants={item} className="grid gap-4 sm:grid-cols-2">
+            <motion.div variants={item} className="grid w-full max-w-5xl gap-4 sm:grid-cols-2">
               <CyberCard href="/cves" className="p-5">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-4 text-left">
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">Live CVE counter</p>
                     <p className="mt-3 text-4xl font-semibold text-white">+328</p>
                   </div>
                   <Crosshair className="h-8 w-8 text-cyan-200" />
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-400">Critical and actively exploited vulnerabilities tracked in the feed.</p>
+                <p className="mt-4 text-left text-sm leading-6 text-slate-400">Critical and actively exploited vulnerabilities tracked in the feed.</p>
                 <div className="data-stream mt-5 h-px w-full" />
               </CyberCard>
 
               <CyberCard href="/exploitation" className="p-5">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-4 text-left">
                   <div>
                     <p className="text-xs uppercase tracking-[0.24em] text-fuchsia-300">Active exploitation</p>
                     <p className="mt-3 text-4xl font-semibold text-white">14</p>
                   </div>
                   <Bolt className="h-8 w-8 text-fuchsia-200" />
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-400">Threat actor activity, KEV status, and exploit availability combined.</p>
+                <p className="mt-4 text-left text-sm leading-6 text-slate-400">Threat actor activity, KEV status, and exploit availability combined.</p>
                 <div className="data-stream mt-5 h-px w-full" />
               </CyberCard>
             </motion.div>
           </div>
 
-          <motion.div variants={item} className="relative min-h-[560px] overflow-hidden rounded-[32px] border border-cyan-300/15 bg-slate-950/70 p-5 shadow-[0_0_90px_rgba(38,247,255,0.09)]">
+          <motion.div variants={item} className="relative mx-auto min-h-[420px] w-full max-w-6xl overflow-hidden rounded-[32px] border border-cyan-300/15 bg-slate-950/70 p-5 shadow-[0_0_90px_rgba(38,247,255,0.09)]">
             <div className="absolute inset-0 cyber-grid opacity-40" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(38,247,255,0.15),transparent_28%),linear-gradient(180deg,transparent,rgba(3,5,13,0.88))]" />
             <motion.div
