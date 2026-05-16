@@ -144,47 +144,103 @@ export const advisoryBanners: ThreatTickerItem[] = [
 ];
 
 export const recentCves = [
-  {
-    id: "CVE-2025-4501",
-    title: "Windows Print Spooler Elevation of Privilege",
-    score: "9.8",
+ {
+    id: "CVE-2026-3055",
+    title: "Citrix NetScaler Memory Overread (CitrixBleed 3)",
+    score: "9.4",
     status: "Active exploitation",
-    products: ["Microsoft Windows Server", "Windows 11"],
+    products: ["Citrix NetScaler ADC", "NetScaler Gateway"],
+    link: "https://nvd.nist.gov/vuln/detail/CVE-2026-3055",
+    vendor: "Citrix",
+    kev: true,
   },
   {
-    id: "CVE-2025-3721",
-    title: "Apache HTTP Server Remote Code Execution",
-    score: "9.6",
+    id: "CVE-2026-35616",
+    title: "Fortinet FortiClient EMS Improper Access Control",
+    score: "9.8",
     status: "KEV listed",
-    products: ["Apache HTTP Server"],
+    products: ["FortiClient EMS 7.4.x"],
+    link: "https://nvd.nist.gov/vuln/detail/CVE-2026-35616",
+    vendor: "Fortinet",
+    kev: true,
   },
   {
-    id: "CVE-2025-5192",
-    title: "Linux Kernel Memory Corruption",
-    score: "8.9",
+    id: "CVE-2026-34197",
+    title: "Apache ActiveMQ Classic Remote Code Execution",
+    score: "9.8",
+    status: "Public exploit available",
+    products: ["Apache ActiveMQ Classic"],
+    link: "https://nvd.nist.gov/vuln/detail/CVE-2026-34197",
+    vendor: "Apache",
+    kev: false,
+  },
+  {
+    id: "CVE-2026-5281",
+    title: "Google Chrome Dawn Use-After-Free Zero-Day",
+    score: "8.8",
+    status: "Actively exploited in the wild",
+    products: ["Google Chrome", "Chromium-based Browsers"],
+    link: "https://nvd.nist.gov/vuln/detail/CVE-2026-5281",
+    vendor: "Google",
+    kev: false,
+  },
+  {
+    id: "CVE-2026-31431",
+    title: "Linux Kernel Copy Fail Privilege Escalation",
+    score: "8.5",
     status: "Exploit proof-of-concept",
-    products: ["Linux Kernel"],
+    products: ["Linux Kernel", "Cloud Linux Environments"],
+    link: "https://nvd.nist.gov/vuln/detail/CVE-2026-31431",
+    vendor: "Linux Kernel",
+    kev: false,
   },
 ];
 
 export const exploitationAlerts = [
   {
-    title: "Public-facing VPN appliances under active probing",
+    title: "Ivanti VPN appliances under active exploitation",
     severity: "Critical",
     target: "Remote access infrastructure",
-    action: "Restrict management access, patch edge devices, and review successful VPN logins.",
+    action:
+      "Patch Ivanti appliances immediately, restrict external management access, and hunt for web shell indicators.",
+    reference:
+      "https://www.cisa.gov/news-events/cybersecurity-advisories/aa24-060a",
   },
   {
-    title: "Credential phishing against Microsoft 365 tenants",
+    title: "Credential phishing campaigns targeting Microsoft 365 tenants",
     severity: "High",
-    target: "Cloud identity",
-    action: "Enforce MFA, revoke suspicious sessions, and review risky sign-ins.",
+    target: "Cloud identity and enterprise email",
+    action:
+      "Enforce phishing-resistant MFA, revoke suspicious sessions, and review risky sign-ins and OAuth app consent grants.",
+    reference:
+      "https://www.microsoft.com/en-us/security/blog/",
   },
   {
-    title: "Ransomware affiliates abusing exposed RDP",
+    title: "Ransomware affiliates exploiting exposed RDP services",
     severity: "High",
-    target: "Windows servers",
-    action: "Disable public RDP, require VPN access, and monitor brute-force attempts.",
+    target: "Windows servers and enterprise endpoints",
+    action:
+      "Disable public RDP exposure, enforce VPN-only access, enable account lockout policies, and monitor brute-force activity.",
+    reference:
+      "https://www.cisa.gov/stopransomware",
+  },
+  {
+    title: "Active exploitation of edge firewall and gateway devices",
+    severity: "Critical",
+    target: "Perimeter security appliances",
+    action:
+      "Patch internet-facing devices, review administrative logins, rotate credentials, and validate firmware integrity.",
+    reference:
+      "https://unit42.paloaltonetworks.com/",
+  },
+  {
+    title: "Infostealer malware campaigns targeting browser credentials",
+    severity: "High",
+    target: "Corporate workstations and user credentials",
+    action:
+      "Reset compromised credentials, enable endpoint detection, monitor browser credential theft alerts, and enforce MFA.",
+    reference:
+      "https://www.crowdstrike.com/en-us/blog/",
   },
 ];
 
