@@ -88,7 +88,7 @@ export default function Home() {
                   <span className="block text-gradient-cyber">Threat Intelligence</span>
                 </h1>
                 <p className="mx-auto max-w-3xl text-base leading-8 text-slate-300 sm:text-xl">
-                  A cinematic SOC dashboard for advisory aggregation, exploit tracking, incident response triage, and regional cyber awareness.
+                  Advisory aggregation, exploit tracking, incident response triage, and regional cyber awareness.
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-3">

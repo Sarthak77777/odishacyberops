@@ -7,7 +7,7 @@ export default function AdvisoriesPage() {
       <section className="glass-card rounded-[32px] border border-white/10 bg-slate-950/80 p-8 shadow-[0_24px_80px_-50px_rgba(0,0,0,0.8)]">
         <div className="flex items-center justify-between gap-4">
           <div>
-            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Advisory banner</p>
+            <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Advisory</p>
             <h1 className="mt-2 text-3xl font-semibold text-white">Rotating cyber advisory alerts</h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-400">
               Short operational notices for security teams, leadership briefings, and public awareness updates.
