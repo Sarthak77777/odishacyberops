@@ -55,6 +55,23 @@ export type ThreatTickerItem = {
   href: string;
 };
 
+export type CyberStory = {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  readingTime: string;
+  category: string;
+  backgroundImage: string;
+  summary: string;
+  story: string[];
+  lessons: string[];
+  references: Array<{
+    label: string;
+    url: string;
+  }>;
+};
+
 export const liveMetrics: ThreatMetric[] = [
   {
     id: "active-threats",
@@ -140,6 +157,102 @@ export const advisoryBanners: ThreatTickerItem[] = [
     message: "Palo Alto Unit 42 highlights new Linux supply chain campaign.",
     category: "Threat research",
     href: "/threat-tracker",
+  },
+];
+
+export const cyberStories: CyberStory[] = [
+  {
+    id: "phishing-email-trap",
+    title: "ଇମେଲ୍ ଜାଲରେ ଫସିଥିବା କାର୍ଯ୍ୟାଳୟ",
+    subtitle: "ଏକ ଫିଶିଂ ଇମେଲ୍ କିପରି ଏକ ସଂସ୍ଥାର ଆକାଉଣ୍ଟକୁ ବିପଦରେ ପକାଇଲା",
+    date: "2026-05-16",
+    readingTime: "୬ ମିନିଟ୍",
+    category: "Phishing",
+    backgroundImage: "/stories/phishing-email-trap.svg",
+    summary:
+      "ଏହି କାହାଣୀଟି ବାସ୍ତବ ଜଗତର Microsoft 365 ଫିଶିଂ ଓ କ୍ରେଡେନ୍ସିଆଲ୍ ଚୋରି ଘଟଣାରୁ ପ୍ରେରିତ।",
+    story: [
+      "ସୋମବାର ସକାଳେ ଏକ ସରକାରୀ କାର୍ଯ୍ୟାଳୟର ଜଣେ କର୍ମଚାରୀଙ୍କ ପାଖକୁ ‘ଦରମା ତଥ୍ୟ ଅଦ୍ୟତନ’ ନାମରେ ଏକ ଇମେଲ୍ ଆସିଲା। ଇମେଲ୍ଟି ଦେଖିବାକୁ ଖୁବ ସାଧାରଣ ଲାଗୁଥିଲା, କିନ୍ତୁ ଲିଙ୍କଟି ଆସଲେ ଏକ ନକଲି ଲଗଇନ୍ ପେଜକୁ ନେଉଥିଲା।",
+      "କିଛି ମିନିଟ୍ ମଧ୍ୟରେ ଆକ୍ରମଣକାରୀ ଆକାଉଣ୍ଟରେ ପ୍ରବେଶ କରି ମେଲ୍ ଫରୱାର୍ଡିଂ ନିୟମ ସୃଷ୍ଟି କଲା। ପରେ ସେହି ଆକାଉଣ୍ଟରୁ ଅନ୍ୟ କର୍ମଚାରୀଙ୍କୁ ମଧ୍ୟ ଏହି ପ୍ରକାର ଇମେଲ୍ ପଠାଯାଇଲା।",
+      "SOC ଟିମ୍ ଅସାମାନ୍ୟ ଲଗଇନ୍, ନୂଆ ଇନବକ୍ସ ରୁଲ୍ ଓ ଅଜଣା IP ଚିହ୍ନଟ କରି ଆକାଉଣ୍ଟକୁ ତୁରନ୍ତ ବନ୍ଦ କଲା। ଘଟଣାଟି ଦେଖାଇଦେଲା ଯେ ଏକ ଲିଙ୍କ୍ ଉପରେ ଅତି ତ୍ୱରାନ୍ୱିତ କ୍ଲିକ୍ ସମଗ୍ର ସଂସ୍ଥାକୁ ବିପଦରେ ପକାଇପାରେ।",
+    ],
+    lessons: [
+      "ଲିଙ୍କ୍ କ୍ଲିକ୍ କରିବା ପୂର୍ବରୁ ଡୋମେନ୍ ଯାଞ୍ଚ କରନ୍ତୁ।",
+      "MFA ସକ୍ରିୟ କରନ୍ତୁ ଏବଂ ସନ୍ଦେହଜନକ ସେସନ୍ ବନ୍ଦ କରନ୍ତୁ।",
+      "ଇନବକ୍ସ ଫରୱାର୍ଡିଂ ରୁଲ୍ ନିୟମିତ ଯାଞ୍ଚ କରନ୍ତୁ।",
+    ],
+    references: [
+      {
+        label: "Microsoft Security Blog - Phishing and identity protection",
+        url: "https://www.microsoft.com/en-us/security/blog/",
+      },
+      {
+        label: "CISA - Avoiding Social Engineering and Phishing Attacks",
+        url: "https://www.cisa.gov/news-events/news/avoiding-social-engineering-and-phishing-attacks",
+      },
+    ],
+  },
+  {
+    id: "ransomware-night-shift",
+    title: "ରାତିରେ ଆସିଥିବା ରାନସମୱେର",
+    subtitle: "ବ୍ୟାକଅପ୍, ଲଗ୍ ଓ ତୁରନ୍ତ ପ୍ରତିକ୍ରିୟା କିପରି ଏକ ବଡ଼ କ୍ଷତିକୁ ରୋକିଲା",
+    date: "2026-05-16",
+    readingTime: "୭ ମିନିଟ୍",
+    category: "Ransomware",
+    backgroundImage: "/stories/ransomware-night-shift.svg",
+    summary:
+      "ଏହି କାହାଣୀଟି ବିଭିନ୍ନ ବାସ୍ତବ ରାନସମୱେର ଘଟଣାର ସାଧାରଣ ପ୍ୟାଟର୍ନ ଉପରେ ଆଧାରିତ।",
+    story: [
+      "ରାତି ୨ଟାରେ ମନିଟରିଂ ସିଷ୍ଟମ୍ ହଠାତ୍ ଅଧିକ ଫାଇଲ୍ ପରିବର୍ତ୍ତନ ଓ ଅସାମାନ୍ୟ PowerShell କମାଣ୍ଡ ଦେଖାଇଲା। କିଛି ସର୍ଭରରେ ଫାଇଲ୍ ଏକ୍ସଟେନ୍ସନ୍ ବଦଳିଯାଉଥିଲା।",
+      "ଡ୍ୟୁଟି ଆନାଲିଷ୍ଟ୍ ତୁରନ୍ତ ପ୍ରଭାବିତ ସବନେଟ୍ ଅଲଗା କଲେ, ଆଡମିନ୍ ଆକାଉଣ୍ଟର ସେସନ୍ ବନ୍ଦ କଲେ ଏବଂ EDR ଟୁଲ୍ ଦ୍ୱାରା ସନ୍ଦେହଜନକ ପ୍ରୋସେସ୍ କିଲ୍ କଲେ।",
+      "ପରବର୍ତ୍ତୀ ସକାଳେ ଟିମ୍ ବୁଝିଲା ଯେ ପୁରୁଣା RDP ଏକ୍ସପୋଜର୍ ଦ୍ୱାରା ଆକ୍ରମଣ ଆରମ୍ଭ ହୋଇଥିଲା। ଭଲ ବ୍ୟାକଅପ୍ ଓ ଦ୍ରୁତ ପ୍ରତିକ୍ରିୟା ଥିବାରୁ ସଂସ୍ଥା ପୁନରୁଦ୍ଧାର ହୋଇପାରିଲା।",
+    ],
+    lessons: [
+      "RDP କୁ ସିଧାସଳଖ ଇଣ୍ଟରନେଟ୍ ଉପରେ ଖୋଲା ରଖନ୍ତୁ ନାହିଁ।",
+      "ବ୍ୟାକଅପ୍ ରିଷ୍ଟୋର୍ ଟେଷ୍ଟ୍ ନିୟମିତ କରନ୍ତୁ।",
+      "ଅସାମାନ୍ୟ ଫାଇଲ୍ ପରିବର୍ତ୍ତନ ଓ ସ୍କ୍ରିପ୍ଟିଂ କାର୍ଯ୍ୟକଳାପ ଉପରେ ଆଲର୍ଟ୍ ରଖନ୍ତୁ।",
+    ],
+    references: [
+      {
+        label: "CISA StopRansomware",
+        url: "https://www.cisa.gov/stopransomware",
+      },
+      {
+        label: "No More Ransom",
+        url: "https://www.nomoreransom.org/",
+      },
+    ],
+  },
+  {
+    id: "loan-app-digital-trap",
+    title: "ଲୋନ୍ ଆପ୍‌ର ଡିଜିଟାଲ୍ ଫାନ୍ଦ",
+    subtitle: "ଅନୁମତି, କନ୍ଟାକ୍ଟ ଲିଷ୍ଟ୍ ଓ ଭୟ ଦେଖାଇ ଠକେଇ କିପରି ହୁଏ",
+    date: "2026-05-16",
+    readingTime: "୫ ମିନିଟ୍",
+    category: "Cyber Awareness",
+    backgroundImage: "/stories/loan-app-digital-trap.svg",
+    summary:
+      "ଏହି କାହାଣୀଟି ଭାରତରେ ଦେଖାଯାଇଥିବା ଅନଧିକୃତ ଲୋନ୍ ଆପ୍ ଓ ଡିଜିଟାଲ୍ ହାରାସମେଣ୍ଟ୍ ପ୍ୟାଟର୍ନରୁ ପ୍ରେରିତ।",
+    story: [
+      "ଜଣେ ଯୁବକ ଆପତ୍କାଳୀନ ଟଙ୍କା ପାଇଁ ଏକ ଅଜଣା ଲୋନ୍ ଆପ୍ ଇନଷ୍ଟଲ୍ କଲେ। ଆପ୍ଟି କନ୍ଟାକ୍ଟ, ଫଟୋ, SMS ଓ ଫାଇଲ୍ ଆକ୍ସେସ୍ ଚାହିଲା।",
+      "କିଛି ଦିନ ପରେ ଠକମାନେ ଅଧିକ ଟଙ୍କା ଦାବି କରି ପରିବାର ଓ ସଙ୍ଗମାନଙ୍କୁ ମେସେଜ୍ କରିବାକୁ ଧମକ ଦେଲେ। ଡିଜିଟାଲ୍ ଚାପ ଓ ଲଜ୍ଜାର ଭୟରେ ଭୋଗୀ ପୁନଃପୁନି ଟଙ୍କା ପଠାଇଲେ।",
+      "ସାଇବର୍ ହେଲ୍ପଲାଇନ୍‌ରେ ଅଭିଯୋଗ ପରେ ଆକାଉଣ୍ଟ ଟ୍ରେଲ୍ ସଂଗ୍ରହ ହେଲା, ଆପ୍ ଅନଇନଷ୍ଟଲ୍ ହେଲା ଓ ଅନୁମତିଗୁଡିକ ବନ୍ଦ କରାଗଲା। ଏହା ଦେଖାଇଦେଲା ଯେ ସହଜ ଲୋନ୍ ଅଫର୍ ସବୁବେଳେ ସୁରକ୍ଷିତ ନୁହେଁ।",
+    ],
+    lessons: [
+      "ଅଜଣା ଲୋନ୍ ଆପ୍‌କୁ କନ୍ଟାକ୍ଟ, ଫଟୋ, SMS ଆକ୍ସେସ୍ ଦିଅନ୍ତୁ ନାହିଁ।",
+      "ଠକେଇ ହେଲେ 1930 କିମ୍ବା cybercrime.gov.in ରେ ଅଭିଯୋଗ କରନ୍ତୁ।",
+      "କେବଳ ନିୟମିତ ବ୍ୟାଙ୍କ/NBFC ଆପ୍ ବ୍ୟବହାର କରନ୍ତୁ।",
+    ],
+    references: [
+      {
+        label: "National Cyber Crime Portal",
+        url: "https://cybercrime.gov.in",
+      },
+      {
+        label: "RBI Sachet Portal",
+        url: "https://sachet.rbi.org.in",
+      },
+    ],
   },
 ];
 

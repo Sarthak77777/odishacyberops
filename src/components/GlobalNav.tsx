@@ -8,6 +8,7 @@ const navItems = [
   { label: "Playbooks", href: "/playbooks" },
   { label: "Actors", href: "/actors" },
   { label: "Blog", href: "/blog" },
+  { label: "ଡିଜିଟାଲ୍ ଚକ୍ରବ୍ୟୂହ", href: "/digital-chakrabyuha" },
 ];
 
 export default function GlobalNav() {

@@ -120,6 +120,16 @@ body {
   font-family: var(--font-mono);
 }
 
+.odia-readable {
+  font-family: "Noto Sans Oriya", "Noto Sans Odia", "Kalinga", "Nirmala UI", "Lohit Odia", var(--font-sans);
+  letter-spacing: 0;
+}
+
+.odia-readable p,
+.odia-readable li {
+  line-height: 1.9;
+}
+
 .premium-card {
   transform: translateZ(0);
   transition: border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease, background 220ms ease;

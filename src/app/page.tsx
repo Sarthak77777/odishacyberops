@@ -18,6 +18,7 @@ import { CyberCard, Reveal, StatusPill } from "@/components/MotionPrimitives";
 import {
   advisoryBanners,
   awarenessCards,
+  cyberStories,
   emergencyContacts,
   liveMetrics,
   quickActions,
@@ -344,6 +345,47 @@ export default function Home() {
               </div>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section className="glass-card rounded-[32px] p-6 odia-readable">
+        <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-sm uppercase tracking-[0.24em] text-fuchsia-300">Weekly cyber stories</p>
+            <h2 className="mt-2 text-3xl font-semibold text-white">ଡିଜିଟାଲ୍ ଚକ୍ରବ୍ୟୂହ</h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-400">
+              ବାସ୍ତବ ସାଇବର୍ ଘଟଣାରୁ ପ୍ରେରିତ ସହଜ ଓଡ଼ିଆ କାହାଣୀ, ଶିଖିବା ଯୋଗ୍ୟ ପଏଣ୍ଟ୍ ଓ ରେଫରେନ୍ସ ରିପୋର୍ଟ ସହିତ।
+            </p>
+          </div>
+          <Link
+            href="/digital-chakrabyuha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-fuchsia-300/25 bg-fuchsia-300/10 px-5 py-3 text-sm font-semibold text-fuchsia-100 transition hover:border-fuchsia-200/50 hover:bg-fuchsia-300/15"
+          >
+            ସମସ୍ତ କାହାଣୀ ପଢ଼ନ୍ତୁ
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {cyberStories.slice(0, 3).map((story) => (
+            <Link
+              href={`/digital-chakrabyuha#${story.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              key={story.id}
+              className="premium-card min-h-[260px] overflow-hidden rounded-[24px] border border-slate-700/30 bg-cover bg-center p-5"
+              style={{
+                backgroundImage: `linear-gradient(180deg, rgba(3,5,13,0.28), rgba(3,5,13,0.92)), url(${story.backgroundImage})`,
+              }}
+            >
+              <div className="flex h-full flex-col justify-end">
+                <p className="text-xs uppercase tracking-[0.2em] text-cyan-200">{story.category}</p>
+                <h3 className="mt-3 text-2xl font-semibold leading-tight text-white">{story.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{story.summary}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </div>
