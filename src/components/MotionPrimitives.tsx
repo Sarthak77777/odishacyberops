@@ -51,7 +51,7 @@ export function CyberCard({
   if (!href) return content;
 
   return (
-    <a href={href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60">
+    <a href={href} target="_blank" rel="noopener noreferrer" className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/60">
       {content}
     </a>
   );

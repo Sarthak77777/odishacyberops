@@ -22,6 +22,8 @@ export default function ThreatTrackerPage() {
             <Link
               href={item.href}
               key={item.message}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-3xl border border-slate-700/30 bg-slate-900/90 p-5 text-slate-200 transition hover:border-cyan-300/30 hover:bg-slate-900"
             >
               <p className="text-xs uppercase tracking-[0.24em] text-cyan-300">{item.category}</p>
@@ -36,7 +38,7 @@ export default function ThreatTrackerPage() {
           <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Tracked CVEs</p>
           <div className="mt-5 space-y-4">
             {recentCves.map((cve) => (
-              <Link href={`/cves#${cve.id.toLowerCase()}`} key={cve.id} className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 transition hover:border-cyan-300/30">
+              <Link href={`/cves#${cve.id.toLowerCase()}`} key={cve.id} target="_blank" rel="noopener noreferrer" className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 transition hover:border-cyan-300/30">
                 <p className="text-sm uppercase tracking-[0.2em] text-slate-400">{cve.id}</p>
                 <p className="mt-2 font-semibold text-white">{cve.title}</p>
               </Link>
@@ -48,7 +50,7 @@ export default function ThreatTrackerPage() {
           <p className="text-sm uppercase tracking-[0.24em] text-fuchsia-300">Actor watch</p>
           <div className="mt-5 space-y-4">
             {threatActors.map((actor) => (
-              <Link href="/actors" key={actor.name} className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 transition hover:border-fuchsia-300/30">
+              <Link href="/actors" key={actor.name} target="_blank" rel="noopener noreferrer" className="block rounded-3xl border border-slate-700/30 bg-slate-900/90 p-4 transition hover:border-fuchsia-300/30">
                 <p className="font-semibold text-white">{actor.name}</p>
                 <p className="mt-2 text-sm text-slate-400">{actor.recentCampaign}</p>
               </Link>

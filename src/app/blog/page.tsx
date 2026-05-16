@@ -24,7 +24,7 @@ export default function BlogIndexPage() {
               </div>
               <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-cyan-300">{post.date}</span>
             </div>
-            <Link href={`/blog/${post.slug}`} className="mt-4 inline-flex text-sm font-medium text-cyan-300 hover:text-white">
+            <Link href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-sm font-medium text-cyan-300 hover:text-white">
               Read full analysis →
             </Link>
           </article>

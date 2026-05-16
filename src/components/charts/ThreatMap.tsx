@@ -167,7 +167,7 @@ export default function ThreatMap() {
             </div>
             <div className="mt-4 space-y-3">
               {globalCyberSignals.map((signal) => (
-                <a key={signal.id} href={signal.reference} className="block rounded-2xl border border-white/10 bg-white/[0.04] p-3 transition hover:border-cyan-300/25 hover:bg-cyan-300/10">
+                <a key={signal.id} href={signal.reference} target="_blank" rel="noopener noreferrer" className="block rounded-2xl border border-white/10 bg-white/[0.04] p-3 transition hover:border-cyan-300/25 hover:bg-cyan-300/10">
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-sm font-semibold text-white">{signal.source}</p>
                     <ExternalLink className="h-3.5 w-3.5 text-cyan-300" />

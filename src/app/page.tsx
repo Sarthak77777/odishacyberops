@@ -94,6 +94,8 @@ export default function Home() {
               <div className="flex flex-wrap justify-center gap-3">
                 <Link
                   href="/threat-tracker"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-5 py-3 text-sm font-semibold text-cyan-100 shadow-[0_0_34px_rgba(38,247,255,0.12)] transition hover:border-cyan-200/50 hover:bg-cyan-300/15"
                 >
                   Open threat tracker
@@ -101,6 +103,8 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/contacts"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-fuchsia-300/30 hover:bg-fuchsia-300/10"
                 >
                   Incident response
@@ -175,6 +179,8 @@ export default function Home() {
                     <Link
                       href={banner.href}
                       key={banner.message}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group flex items-start justify-between gap-3 rounded-2xl border border-slate-700/35 bg-slate-950/70 p-3 text-sm text-slate-300 transition hover:border-cyan-300/25 hover:bg-cyan-300/10"
                     >
                       <span>{banner.message}</span>
@@ -185,12 +191,12 @@ export default function Home() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Link href="/advisories" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+                <Link href="/advisories" target="_blank" rel="noopener noreferrer" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
                   <Sparkles className="h-6 w-6 text-cyan-300" />
                   <p className="mt-4 text-xs uppercase tracking-[0.24em] text-slate-400">Advisory banner</p>
                   <p className="mt-2 text-lg font-semibold text-white">Rotating cyber advisory alerts</p>
                 </Link>
-                <Link href="/network" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
+                <Link href="/network" target="_blank" rel="noopener noreferrer" className="premium-card rounded-[24px] border border-white/10 bg-white/[0.055] p-5 backdrop-blur-xl">
                   <Globe className="h-6 w-6 text-fuchsia-300" />
                   <p className="mt-4 text-xs uppercase tracking-[0.24em] text-slate-400">Network background</p>
                   <p className="mt-2 text-lg font-semibold text-white">Animated telemetry pulse</p>
@@ -215,7 +221,7 @@ export default function Home() {
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                 {recentCves.map((cve, index) => (
                   <Reveal key={cve.id} delay={index * 0.05}>
-                    <Link href={`/cves#${cve.id.toLowerCase()}`} className="premium-card block h-full rounded-[24px] border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                    <Link href={`/cves#${cve.id.toLowerCase()}`} target="_blank" rel="noopener noreferrer" className="premium-card block h-full rounded-[24px] border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
                       <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">{cve.id}</p>
                       <h3 className="mt-3 text-lg font-semibold text-white">{cve.title}</h3>
                       <p className="mt-2 text-sm text-slate-400">{cve.products.join(", ")}</p>
@@ -242,7 +248,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Quick actions</p>
               <div className="mt-5 grid gap-3">
                 {quickActions.map((action) => (
-                  <Link key={action.label} href={action.href} className="premium-card flex items-center justify-between rounded-2xl border border-slate-700/40 bg-slate-950/70 px-4 py-3 text-sm font-medium text-slate-100">
+                  <Link key={action.label} href={action.href} target="_blank" rel="noopener noreferrer" className="premium-card flex items-center justify-between rounded-2xl border border-slate-700/40 bg-slate-950/70 px-4 py-3 text-sm font-medium text-slate-100">
                     {action.label}
                     <ArrowUpRight className="h-4 w-4 text-cyan-300" />
                   </Link>
@@ -256,7 +262,7 @@ export default function Home() {
               <p className="text-sm uppercase tracking-[0.24em] text-red-300">Cyber emergency contact hub</p>
               <div className="mt-5 space-y-4">
                 {emergencyContacts.map((contact) => (
-                  <a key={contact.label} href={contact.link} className="premium-card group block rounded-2xl border border-slate-800/50 bg-slate-950/70 p-4">
+                  <a key={contact.label} href={contact.link} target="_blank" rel="noopener noreferrer" className="premium-card group block rounded-2xl border border-slate-800/50 bg-slate-950/70 p-4">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-sm font-semibold text-white">{contact.label}</p>
@@ -306,7 +312,7 @@ export default function Home() {
               <h2 className="mt-2 text-2xl font-semibold text-white">Active actor watchlist</h2>
               <div className="mt-5 space-y-4">
                 {threatActors.map((actor) => (
-                  <Link href="/actors" key={actor.name} className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                  <Link href="/actors" key={actor.name} target="_blank" rel="noopener noreferrer" className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-lg font-semibold text-white">{actor.name}</p>
@@ -323,13 +329,13 @@ export default function Home() {
 
           <Reveal delay={0.06}>
             <div className="glass-card rounded-[32px] p-6">
-              <Link href="/awareness" className="group block">
+              <Link href="/awareness" target="_blank" rel="noopener noreferrer" className="group block">
                 <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Awareness portal</p>
                 <h2 className="mt-2 text-2xl font-semibold text-white transition group-hover:text-cyan-100">Regional cyber awareness</h2>
               </Link>
               <div className="mt-5 space-y-4">
                 {awarenessCards.slice(0, 3).map((card) => (
-                  <Link href={`/awareness#${card.id}`} key={card.title} className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
+                  <Link href={`/awareness#${card.id}`} key={card.title} target="_blank" rel="noopener noreferrer" className="premium-card block rounded-2xl border border-slate-700/30 bg-slate-950/70 p-4 text-slate-200">
                     <p className="text-lg font-semibold text-white">{card.title}</p>
                     <p className="mt-2 text-sm text-slate-400">{card.description}</p>
                     <p className="mt-3 text-sm uppercase tracking-[0.2em] text-cyan-300">{card.action}</p>
