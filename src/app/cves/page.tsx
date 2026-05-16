@@ -1,4 +1,4 @@
-import { ShieldAlert } from "lucide-react";
+import { ExternalLink, ShieldAlert } from "lucide-react";
 import { recentCves } from "@/lib/data";
 
 export default function CvesPage() {
@@ -28,10 +28,27 @@ export default function CvesPage() {
             <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
               <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-cyan-300">{cve.score} CVSS</span>
               <span className="rounded-full bg-red-500/10 px-3 py-1 text-red-300">{cve.status}</span>
+              {"kev" in cve && cve.kev ? (
+                <span className="rounded-full bg-fuchsia-500/10 px-3 py-1 text-fuchsia-300">KEV tracked</span>
+              ) : null}
             </div>
             <p className="mt-5 text-sm leading-7 text-slate-300">
               Recommended action: validate exposure, apply vendor patches, and add detection coverage for exploitation attempts.
             </p>
+            {"vendor" in cve ? (
+              <p className="mt-3 text-sm text-slate-500">Vendor: {cve.vendor}</p>
+            ) : null}
+            {"link" in cve && cve.link ? (
+              <a
+                href={cve.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/50 hover:bg-cyan-300/15"
+              >
+                Reference documentation
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            ) : null}
           </article>
         ))}
       </div>

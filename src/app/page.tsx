@@ -82,10 +82,10 @@ export default function Home() {
           <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-8 py-8 text-center lg:py-12">
             <motion.div variants={heroRise} className="space-y-6">
               <StatusPill tone="emerald">Live Odisha Cyber Fusion Center</StatusPill>
-              <div className="space-y-6">
-                <h1 className="mx-auto max-w-6xl text-5xl font-semibold leading-[0.95] tracking-normal text-white sm:text-7xl lg:text-8xl">
+              <div className="space-y-9">
+                <h1 className="mx-auto max-w-6xl text-5xl font-semibold leading-[1.06] tracking-normal text-white sm:text-7xl lg:text-8xl">
                   Odisha Cyber Operations
-                  <span className="block text-gradient-cyber">Threat Intelligence</span>
+                  <span className="mt-2 block text-gradient-cyber sm:mt-3">Threat Intelligence</span>
                 </h1>
                 <p className="mx-auto max-w-3xl text-base leading-8 text-slate-300 sm:text-xl">
                   Advisory aggregation, exploit tracking, incident response triage, and regional cyber awareness.
