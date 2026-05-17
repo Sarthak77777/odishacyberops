@@ -10,7 +10,7 @@ export default function DigitalChakrabyuhaPage() {
             <p className="text-sm uppercase tracking-[0.24em] text-cyan-300">Weekly cyber stories</p>
             <h1 className="mt-3 text-4xl font-semibold text-white sm:text-5xl">ଡିଜିଟାଲ୍ ଚକ୍ରବ୍ୟୂହ</h1>
             <p className="mt-4 max-w-3xl text-base leading-8 text-slate-300">
-              ବାସ୍ତବ ଜଗତର ସାଇବର୍ ଘଟଣାରୁ ପ୍ରେରିତ ସହଜ ଓଡ଼ିଆ କାହାଣୀ। ପ୍ରତି ସପ୍ତାହରେ ଏକ ନୂଆ କାହାଣୀ ଯୋଡ଼ନ୍ତୁ।
+              ବାସ୍ତବ ଜଗତର ସାଇବର୍ ଘଟଣାରୁ ପ୍ରେରିତ କାହାଣୀ ।
             </p>
           </div>
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-fuchsia-300/25 bg-fuchsia-300/10 px-4 py-2 text-sm font-semibold text-fuchsia-100">
@@ -58,7 +58,7 @@ export default function DigitalChakrabyuhaPage() {
                 <div className="rounded-[24px] border border-slate-700/40 bg-slate-950/70 p-5">
                   <div className="flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-cyan-300">
                     <BookOpen className="h-4 w-4" />
-                    ଶିଖିବା ଯୋଗ୍ୟ
+                    ମନେ ରଖନ୍ତୁ 
                   </div>
                   <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
                     {story.lessons.map((lesson) => (
